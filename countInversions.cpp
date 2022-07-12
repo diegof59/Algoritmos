@@ -1,3 +1,7 @@
+#include <iostream>
+#include <vector>
+#include <limits>
+using namespace std;
 
 // Implementacion del algoritmo intuitivo para hallar las inversiones de un arreglo
 void invCountIntuitivo(vector<int> arr, int n){
@@ -14,7 +18,7 @@ void invCountIntuitivo(vector<int> arr, int n){
         }
     }
 
-    cout << count << endl;
+    cout << "Num inversiones:" << count << endl;
 }
 
 // Implementacion del algoritmo para hallar las inversiones de un arreglo utilizando tecnica divide y venceras
@@ -26,10 +30,6 @@ void invCountRecursivo(vector<int> &arr, int n){
 
     int numInversiones = mergeSortInvCount(arr, 1, n);
     cout << "Num inversiones:" << numInversiones << endl;
-    for(int i=0; i < n; i++){
-
-        cout<<arr[i]<<endl;
-    }
 }
 
 int mergeSortInvCount(vector<int> &arr, int izq, int der){
@@ -97,12 +97,24 @@ int mergeInvCount(vector<int> &arr, int izq, int mitad, int der){
 // main
 int main(){
 
+    cout<<"Inversiones de un vector"<<endl<<endl;
+
+    vector<int> v = {4,3,1,8,2};
+    int n = v.size();
+
+    cout<<"Vector: { ";
+    for(int i=0; i < n; i++){
+        cout<<v[i]<<" ";
+    }
+    cout<<"}"<<endl<<endl;
+
     cout << "Conteo de inversiones, algoritmo intuitivo." << endl;
-    invCountIntuitivo({4,3,1,8,2}, 5);
+    invCountIntuitivo(v, n);
+
+    cout<<endl;
 
     cout << "Conteo de inversiones, algoritmo recursivo." << endl;
-    vector<int> v = {4,3,1,8,2};
-    invCountRecursivo(v, 5);
+    invCountRecursivo(v, n);
 
     return 0;
 }
